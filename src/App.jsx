@@ -1,4 +1,5 @@
-import videoSV1 from './assets/videos/wor.mp4';
+import videoSV2 from './assets/videos/wor.mp4';
+import videoSV1 from './assets/videos/slick.mp4';
 import './App.css';
 import { gsap } from 'gsap';
 import { useIdleTimer } from 'react-idle-timer';
@@ -11,6 +12,7 @@ function App() {
 
   const container = useRef();
   let timeline = gsap.timeline();
+
   const onAction = (event, idleTimer) => {
     setShowScreenSaver(false);
   }
@@ -85,7 +87,7 @@ function App() {
   }
 
   useIdleTimer({ 
-    timeout: (1000 * 20),
+    timeout: (1000 * 2),
     promptBeforeIdle: 0,
     onAction,
     onActive,
@@ -94,13 +96,14 @@ function App() {
   });
 
   const [showScreenSaver, setShowScreenSaver] = useState(false);
+  const [vidIndex, setVidIndex] = useState(0);
   const ref = useRef(null);
 
   useEffect(() => {
     if (showScreenSaver && ref.current) {
       ref.current.play();
     }
-  }, [ref, showScreenSaver]);
+  }, [ref, vidIndex, showScreenSaver]);
 
   useEffect(() => {
     const bienvenido = new SplitType('p.trebolpark', { types: 'chars' }).chars;
@@ -151,13 +154,21 @@ function App() {
     {
       showScreenSaver && (
         <div className="screensaver">
-            <video
+            <video id="video1"
               className="screensaver"
-              style={{ display: "block" }}
+              style={{ display: vidIndex === 0 ? "block" : "none" }}
               src={videoSV1}
               autoPlay
               muted
-              loop={true}
+              onEnded={() => {document.getElementById("video2").play();setVidIndex((idx) => idx + 1)}}
+            />
+            <video id="video2"
+              className="screensaver"
+              style={{ display: vidIndex === 1 ? "block" : "none" }}
+              src={videoSV2}
+              muted
+              autoPlay
+              onEnded={() => {document.getElementById("video1").play();setVidIndex(0)}}
             />
         </div>
       )
