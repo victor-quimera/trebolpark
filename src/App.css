@@ -1,0 +1,494 @@
+.App {
+    text-align: center;
+    background-color: #2557bc;
+    background-image: url(./assets/images/fondo.jpg);
+    max-width: 1080px;
+    width: 1080px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: auto;
+    border: 0px solid rgb(255, 255, 255);
+    padding: 0px;
+    max-height: 1920px;
+    height: 1920px;
+    overflow-x:hidden;
+  }
+  
+  .App-logo {
+    pointer-events: none;
+  }
+  
+  .logo_temp {
+    background-image: url('./assets/images/logo_placeholder.jpg');
+    width: 128px;
+    height: 128px;
+    object-fit: fill;
+  }
+
+  .logo_slicksticky {
+    background-image: url('./assets/images/logo_slicksticky.jpg');
+    width: 128px;
+    height: 128px;
+    object-fit: fill;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 4s linear;
+    }
+  }
+  
+  .App-header {
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  .logo {
+    font-family: trebol;
+    font-size: 6em;
+    color: #c1d82f;
+    margin-bottom: 50px;
+  }
+  
+  .logo span {
+    font-family: trebol;
+    font-size: 1.1em;
+    color: #ffffff;
+  }
+
+  .listado_item {
+    position: relative;
+    text-align: left;
+    margin-top: 5px;
+
+    img {
+      position: relative;
+      left: 30px;
+      float: left;
+    }
+
+    h3 {
+      position: relative; 
+      left: 60px;
+      font-family: 'trebol-regular';
+      font-size: 2em;
+      color: #ffffff;
+      margin-bottom: 0px;
+    }
+
+    p {
+      position: relative; 
+      left: 60px;
+      color: #afc90b;
+      font-family: 'trebol-regular';
+      font-size: 1em;
+      width: 80%
+    }
+
+    a {
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    a:visited {
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    .icon {
+      color: #ffffff;
+    }
+  }
+
+  .listado_item_comercial {
+    position: relative;
+    text-align: left;
+    margin-top: 5px;
+
+    img {
+      position: relative;
+      left: 30px;
+      float: left;
+    }
+
+    h3 {
+      position: relative; 
+      left: 60px;
+      font-family: 'trebol-regular';
+      font-size: 2em;
+      color: #646464;
+      margin-bottom: 0px;
+    }
+
+    p {
+      position: relative; 
+      left: 60px;
+      color: #3f4800;
+      font-family: 'trebol-regular';
+      font-size: 1em;
+      width: 80%
+    }
+
+    a {
+      color: #5897fe;
+      font-weight: bold;
+    }
+
+    a:visited {
+      color: #5897fe;
+      font-weight: bold;
+    }
+
+    .icon {
+      color: #5897fe;
+    }
+  }
+
+.divisor {
+  width: 95%;
+}
+
+.link1 {
+    font-size: 3rem;
+    font-family: 'trebol-regular';
+    color: dimgray;
+    text-shadow: -1px 0 #ffffff, 0 1px #ffffff, 1px 0 #ffffff, 0 -1px #ffffff;
+    position: relative;
+    max-width: fit-content;
+    span, i {
+      position: relative;
+    }
+  
+    i {
+      margin-left: 0.5em;
+    }
+  
+    .bola1 {
+      width: 1.2em;
+      height: 1.2em;
+      color: #c1d82f;
+      border-radius: 1.2em;
+      background-color: #c1d82f;
+      position: absolute;
+      top: 15%;
+      left: -0.75em;
+    }
+  }
+  
+  .link2 {
+    font-size: 3rem;
+    font-family: 'trebol-regular';
+    color: dimgray;
+    text-shadow: -1px 0 #ffffff, 0 1px #ffffff, 1px 0 #ffffff, 0 -1px #ffffff;
+    position: relative;
+    max-width: fit-content;
+    span, i {
+      position: relative;
+    }
+  
+    i {
+      margin-left: 0.5em;
+    }
+  
+    .bola2 {
+      width: 1.2em;
+      height: 1.2em;
+      color: #c1d82f;
+      border-radius: 1.2em;
+      background-color: #c1d82f;
+      position: absolute;
+      top: 15%;
+      left: -0.75em;
+    }
+  }
+  
+  .link3 {
+    font-size: 3rem;
+    font-family: 'trebol-regular';
+    color: dimgray;
+    text-shadow: -1px 0 #ffffff, 0 1px #ffffff, 1px 0 #ffffff, 0 -1px #ffffff;
+    position: relative;
+    max-width: fit-content;
+    span, i {
+      position: relative;
+    }
+  
+    i {
+      margin-left: 0.5em;
+    }
+  
+    .bola3 {
+      width: 1.2em;
+      height: 1.2em;
+      color: #c1d82f;
+      border-radius: 1.2em;
+      background-color: #c1d82f;
+      position: absolute;
+      top: 15%;
+      left: -0.75em;
+    }
+  }
+  
+  .link1:hover {
+    cursor: pointer;
+  }
+  
+  .link2:hover {
+    cursor: pointer;
+  }
+  
+  .link3:hover:hover {
+    cursor: pointer;
+  }
+  
+  .comercial {
+    font-size: 2.5em;
+  }
+  
+  .hotel {
+    font-size: 2.5em;
+  }
+  
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+  
+.trebolpark {
+    margin-top: 200px;
+    font-size: 6.5em;
+    font-family: 'trebol-bold';
+    color: #ffffff;
+}
+
+.trebolpark-directorio {
+    margin-top: 45px;
+    font-size: 3em;
+    font-family: 'trebol-regular';
+}
+
+.trebolpark_secciones {
+    font-size: 6.5em;
+    font-family: 'trebol-bold';
+    color: #ffffff;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+.seccion_principal {
+    position: absolute;
+    left: 0px;
+    height: 1585px;
+    max-height: 1585px;;
+    width: 100%;
+    max-width: 100%;
+}
+
+.seccion_directorio {
+    position: absolute;
+    left: -2000px;
+    height: 1150px;
+    max-height: 1150px;
+    top: 700px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.seccion_corporativo {
+    position: absolute;
+    left: 2000px;
+    height: 1585px;
+    max-height: 1585px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.seccion_comercial {
+    position: absolute;
+    top: -2000px;
+    height: 1585px;
+    max-height: 1585px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.seccion_hotel {
+    position: absolute;
+    left: -2000px;
+    height: 1585px;
+    max-height: 1585px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.boton {
+    font-size: 2.5em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #ffffff;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.boton:hover {
+  cursor: pointer;
+}
+
+.bottomright {
+    position: absolute;
+    bottom: 10px;
+    right: 25px;
+    font-size: 2em;
+    font-family: 'trebol-regular';
+    color: #afc90b;
+}
+
+.bottomright:hover {
+    cursor: pointer;
+    color: #d0db85;
+    font-family: 'trebol-bold';
+}
+
+.screensaver {
+   /*min-width: 1080px;
+    min-height: 1920px;
+    */
+   min-width: 100%;
+    /*background-color: #2557bc;*/
+}
+
+.espaciador {
+    min-height: 5em;
+}
+
+.card {
+    border-radius: 30px;
+    background: #e0e0e0;
+    box-shadow: 15px 15px 30px #bebebe,
+               -15px -15px 30px #ffffff;
+}
+
+.panel.servicios {
+    display:flex;
+}
+
+.panel.servicios.active {
+    display: flex; /* Muestra la sección cuando está activa */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Ajusta la altura para ocupar toda la pantalla */
+}
+
+.panel.membresias {
+    display:none;
+}
+
+.panel.membresias.active {
+    display: flex; /* Muestra la sección cuando está activa */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Ajusta la altura para ocupar toda la pantalla */
+}
+.panel.instalaciones {
+    display:none;
+}
+
+.panel.instalaciones.active {
+    display: flex; /* Muestra la sección cuando está activa */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Ajusta la altura para ocupar toda la pantalla */
+}
+
+.listado-corporativo {
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  border-radius:5px;
+  background: #5f5f5f; /* fallback for browsers that don't understand rgba */
+  border: solid 3px #000; /* fallback for browsers that don't understand rgba */
+  background-color: rgba(89, 89, 89, 0.8); /* slighly transparent white */
+  border-color: rgba(0,0,0,0.2); /*Very transparent black*/
+  width: 80%;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 1200px;
+  max-height: 1200px;
+}
+
+.listado-comercial {
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  border-radius:5px;
+  background: #eaeaea; /* fallback for browsers that don't understand rgba */
+  border: solid 3px #000; /* fallback for browsers that don't understand rgba */
+  background-color: rgba(244, 244, 244, 0.8); /* slighly transparent white */
+  border-color: rgba(0,0,0,0.2); /*Very transparent black*/
+  width: 80%;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 1200px;
+  max-height: 1200px;
+}
+
+.manita {
+  width: 40px;
+  max-width: 40px;
+  height: 40px;
+  max-height: 40px;
+  background-image: url('./assets/images/manitablanca.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+body {
+    background-color: #65676b;
+    overflow-x:hidden;
+}
+
+  @font-face {
+    font-family:'trebol-bold';
+    src: url('./assets/fonts/texgyreadventor-bold-webfont.woff2');
+  }
+  @font-face {
+    font-family:'trebol-regular';
+    src: url('./assets/fonts/texgyreadventor-regular-webfont.woff2');
+  }
+  @font-face {
+    font-family:'trebol';
+    src: url('./assets/fonts/trebol.woff');
+  }
+  
