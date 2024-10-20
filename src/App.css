@@ -422,7 +422,26 @@
     height: 100vh; /* Ajusta la altura para ocupar toda la pantalla */
 }
 
+.corporativo-show {
+  position: absolute;
+  -moz-border-radius:25px;
+  -webkit-border-radius:25px;
+  border-radius:5px;
+  background: #5f5f5f; /* fallback for browsers that don't understand rgba */
+  border: solid 3px #000; /* fallback for browsers that don't understand rgba */
+  background-color: rgba(89, 89, 89, 0.8); /* slighly transparent white */
+  border-color: rgba(0,0,0,0.2); /*Very transparent black*/
+  width: 80%;
+  max-width: 80%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 1200px;
+  max-height: 1200px;
+  left: -3500px;
+}
+
 .listado-corporativo {
+  left: 108px;
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
   border-radius:5px;
@@ -432,12 +451,11 @@
   border-color: rgba(0,0,0,0.2); /*Very transparent black*/
   width: 80%;
   max-width: 80%;
-  margin-left: auto;
-  margin-right: auto;
   overflow-y: scroll;
   overflow-x: hidden;
   height: 1200px;
   max-height: 1200px;
+  position: absolute;
 }
 
 .listado-comercial {
@@ -473,6 +491,13 @@
   right: 10px;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+
+.forza-css {
+  background-image: url('./assets/images/forza.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
 body {

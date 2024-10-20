@@ -16,7 +16,7 @@ const createWindow = () => {
     },
     autoHideMenuBar: true,
     alwaysOnTop: true,
-    frame: false,
+    frame: true,
     fullscreen: true
   });
 

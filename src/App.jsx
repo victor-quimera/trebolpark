@@ -1,5 +1,6 @@
+import videoSV1 from './assets/videos/forza.mp4';
 import videoSV2 from './assets/videos/wor.mp4';
-import videoSV1 from './assets/videos/slick.mp4';
+import videoSV3 from './assets/videos/slick.mp4';
 import './App.css';
 import { gsap } from 'gsap';
 import { useIdleTimer } from 'react-idle-timer';
@@ -26,6 +27,24 @@ function App() {
   
   const onIdle = () => {
     setShowScreenSaver(true);
+  }
+
+  const onClickCorporativo = (imagen) => {
+    let sCorporativo = container.current.querySelector(".corporativo-show");
+    let sListadoCorporativo = container.current.querySelector(".listado-corporativo");
+    sCorporativo.className = "corporativo-show "+imagen+"-css";
+    timeline.to(sListadoCorporativo, {left: "3000px", ease: "power2.in", duration: 0.25});
+    timeline.to(sCorporativo, {left: 108, ease: "power2.out", duration: 0.25});
+    timeline.play();
+  }
+
+  const onCloseCorporativo = () => {
+    let sCorporativo = container.current.querySelector(".corporativo-show");
+    let sListadoCorporativo = container.current.querySelector(".listado-corporativo");
+    sCorporativo.className = "corporativo-show";
+    timeline.to(sCorporativo, {left: "3000px", ease: "power2.in", duration: 0.25});
+    timeline.to(sListadoCorporativo, {left: 108, ease: "power2.out", duration: 0.25});
+    timeline.play();
   }
 
   const onClickHere = () => {
@@ -87,7 +106,7 @@ function App() {
   }
 
   useIdleTimer({ 
-    timeout: (1000 * 2),
+    timeout: (1000 * 2500),
     promptBeforeIdle: 0,
     onAction,
     onActive,
@@ -168,6 +187,14 @@ function App() {
               src={videoSV2}
               muted
               autoPlay
+              onEnded={() => {document.getElementById("video3").play();setVidIndex((idx) => idx + 1)}}
+            />
+            <video id="video3"
+              className="screensaver"
+              style={{ display: vidIndex === 2 ? "block" : "none" }}
+              src={videoSV3}
+              muted
+              autoPlay
               onEnded={() => {document.getElementById("video1").play();setVidIndex(0)}}
             />
         </div>
@@ -222,12 +249,14 @@ function App() {
               <p className="trebolpark_secciones">
                   Corporativo
               </p>
+            <div className="corporativo-show" onClick={() => onCloseCorporativo()}>
+            </div>
             <div className="listado-corporativo">
               <div className='listado_item'>
                   <img className='logo_temp' />
                   <h3>Oficinas Canavati - N 3, 4</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://canavati.mx</a>
@@ -235,10 +264,10 @@ function App() {
               </div>
               <hr className='divisor'/>
               <div className='listado_item'>
-                  <img className='logo_temp' />
+                  <a href="#" onClick={() => onClickCorporativo('forza')}><img className='logo_temp' /></a>
                   <h3>Forza - N 5, 19</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://forza.mx</a>
@@ -249,7 +278,7 @@ function App() {
                   <img className='logo_temp' />
                   <h3>TEITER - N 6-03, 04</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://teiter.mx</a>
@@ -260,7 +289,7 @@ function App() {
                   <img className='logo_temp' />
                   <h3>THG - N 6-01</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://thg.mx</a>
@@ -271,10 +300,10 @@ function App() {
                   <img className='logo_temp' />
                   <h3>Maria E Subierbe Cortina - N 6-02</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://forza.mx</a>
+                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://google.com</a>
                 </p>
               </div>
               <hr className='divisor'/>
@@ -282,7 +311,7 @@ function App() {
                   <img className='logo_temp' />
                   <h3>Ingeniería y Abastecimiento - N 7-03</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://ingyabas.mx</a>
@@ -293,7 +322,7 @@ function App() {
                   <img className='logo_temp' />
                   <h3>ROVIDAMEX - N 7-02</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://rovidamex.mx</a>
@@ -304,7 +333,7 @@ function App() {
                   <img className='logo_temp' />
                   <h3>FPZ Proyectos - Piso 7-01</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://fpz.mx</a>
@@ -315,7 +344,7 @@ function App() {
                   <img className='logo_temp' />
                   <h3>Wor - N 8-01</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://wor.mx</a>
@@ -326,7 +355,7 @@ function App() {
                   <img className='logo_slicksticky' />
                   <h3>SlickSticky - N 8</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://slicksticky.com.mx</a>
@@ -337,10 +366,10 @@ function App() {
                   <img className='logo_temp' />
                   <h3>Inversiones Jame - N 9-01</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://forza.mx</a>
+                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://google.com</a>
                 </p>
               </div>
               <hr className='divisor'/>
@@ -348,10 +377,10 @@ function App() {
                   <img className='logo_temp' />
                   <h3>Diseño e Innovación inmobiliaria del norte - N 9-02</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://forza.mx</a>
+                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://google.com</a>
                 </p>
               </div>
               <hr className='divisor'/>
@@ -359,10 +388,10 @@ function App() {
                   <img className='logo_temp' />
                   <h3>Servo consultores fiscales - N9-03</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://forza.mx</a>
+                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://google.com</a>
                 </p>
               </div>
               <hr className='divisor'/>
@@ -370,7 +399,7 @@ function App() {
                   <img className='logo_temp' />
                   <h3>SAN-MEX de norte - N9-04</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://sanmex.mx</a>
@@ -381,10 +410,10 @@ function App() {
                   <img className='logo_temp' />
                   <h3>Servo consultores fiscales - N9-03</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://forza.mx</a>
+                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://google.com</a>
                 </p>
               </div>
               <hr className='divisor'/>
@@ -392,10 +421,10 @@ function App() {
                   <img className='logo_temp' />
                   <h3>DIP9 - N10, 14</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://forza.mx</a>
+                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://google.com</a>
                 </p>
               </div>
               <hr className='divisor'/>
@@ -403,10 +432,10 @@ function App() {
                   <img className='logo_temp' />
                   <h3>TERRANUMA SERVICIOS INMOBILIARIOS - N11-01</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://forza.mx</a>
+                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://google.com</a>
                 </p>
               </div>
               <hr className='divisor'/>
@@ -414,10 +443,10 @@ function App() {
                   <img className='logo_temp' />
                   <h3>SOXTEC - N11-02</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://forza.mx</a>
+                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://google.com</a>
                 </p>
               </div>
               <hr className='divisor'/>
@@ -425,10 +454,10 @@ function App() {
                   <img className='logo_temp' />
                   <h3>Copperwolf - N11-03</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://forza.mx</a>
+                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://google.com</a>
                 </p>
               </div>
               <hr className='divisor'/>
@@ -436,10 +465,10 @@ function App() {
                   <img className='logo_temp' />
                   <h3>INVERSIONES 2324 - N11-04</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://forza.mx</a>
+                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://google.com</a>
                 </p>
               </div>
               <hr className='divisor'/>
@@ -447,10 +476,10 @@ function App() {
                   <img className='logo_temp' />
                   <h3>JACKTUR CONSORCIO EMPRESARIAL - N11-05</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://forza.mx</a>
+                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://google.com</a>
                 </p>
               </div>
               <hr className='divisor'/>
@@ -458,10 +487,10 @@ function App() {
                   <img className='logo_temp' />
                   <h3>B-PRIME - N12</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://forza.mx</a>
+                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://google.com</a>
                 </p>
               </div>
               <hr className='divisor'/>
@@ -469,10 +498,10 @@ function App() {
                   <img className='logo_temp' />
                   <h3>Torres Lindsey - N15</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://forza.mx</a>
+                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://google.com</a>
                 </p>
               </div>
               <hr className='divisor'/>
@@ -480,10 +509,10 @@ function App() {
                   <img className='logo_temp' />
                   <h3>NORTEC - N16</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://forza.mx</a>
+                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://google.com</a>
                 </p>
               </div>
               <hr className='divisor'/>
@@ -491,10 +520,10 @@ function App() {
                   <img className='logo_temp' />
                   <h3>Harbor - N17-03</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://forza.mx</a>
+                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://google.com</a>
                 </p>
               </div>
               <hr className='divisor'/>
@@ -502,10 +531,10 @@ function App() {
                   <img className='logo_temp' />
                   <h3>JAVIER GONZÁLEZ GALVÁN - N17-02</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://forza.mx</a>
+                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://google.com</a>
                 </p>
               </div>
               <hr className='divisor'/>
@@ -513,10 +542,10 @@ function App() {
                   <img className='logo_temp' />
                   <h3>ARCELORMITTAL MEXICO - N18</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://forza.mx</a>
+                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://google.com</a>
                 </p>
               </div>
               <hr className='divisor'/>
@@ -524,10 +553,10 @@ function App() {
                   <img className='logo_temp' />
                   <h3>SEPICLA - N20</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://forza.mx</a>
+                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://google.com</a>
                 </p>
               </div>
               <hr className='divisor'/>
@@ -535,10 +564,10 @@ function App() {
                   <img className='logo_temp' />
                   <h3>TRX-TREBOL PH - N21, 22, 23</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://forza.mx</a>
+                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://google.com</a>
                 </p>
               </div>
               <hr className='divisor'/>
@@ -546,10 +575,10 @@ function App() {
                   <img className='logo_temp' />
                   <h3>ARCELORMITTAL MEXICO - N24-PH, N25 MZPH</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://forza.mx</a>
+                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://google.com</a>
                 </p>
               </div>
             </div>
@@ -566,7 +595,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>LOS FRESNOS - L 1, 2</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://losfresnos.mx</a>
@@ -577,7 +606,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>DON CARBON- L 3</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -588,7 +617,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>PANGO - L 4, 5, 6</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -599,7 +628,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>FUSIBLES DEL NORTE - L 8</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -610,7 +639,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>TANKROOM - L 9</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -621,7 +650,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>YAKITORI UME - L 10</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -632,7 +661,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>GOMIPEPE - ACS1</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -643,7 +672,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>CNSF - L 11</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -654,7 +683,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>GRUPO EQUINOCCIAL - L 12,13</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -665,7 +694,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>SALON EVENTOS HOTEL - L14, 15, 16</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -676,7 +705,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>TULU-MN - L 17, 18</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -687,7 +716,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>9 FUEGOS - L 19 T12</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -698,7 +727,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>MARISCOS EL GORDO - L 20, 21, 22, 23</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -707,12 +736,12 @@ function App() {
               <hr className='divisor'/>                                                                                                  
               <div className='listado_item_comercial'>
                 <img className='logo_temp' />
-                <h3>JC MOTORS - L 24</h3>
+                <h3>TREBOL MOTORS - L 24</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8402.1000
                 </p>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
+                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">trebolautomoviles@gmail.com</a>
                 </p>
               </div>
               <hr className='divisor'/>                                                                                                  
@@ -720,7 +749,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>GRUPO EQUINOCCIAL - L 12,13</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -731,7 +760,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>QUIROPRACTICO LR - L 25</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -742,7 +771,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>AR GRUPO INMOBILIARIO - L 27</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -753,7 +782,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>CLÍNICA DE MAXILOFACIAL, MEDICINA ESTÉTICA Y TRASPLANTE CAPILAR - L 28, 29</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -764,7 +793,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>SUSY SALÓN - L 31, 32</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -775,7 +804,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>DERMA MF - L 33</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -786,7 +815,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>PODCAST HOUSE & STUDIO - L 34</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -797,7 +826,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>GRUPO POSADAS - L 35, 36</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -808,7 +837,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>CYELZA MEXICO - L 38</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -819,7 +848,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>SALUD Y MEDICINA - L 39</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -830,7 +859,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>SANTÉ - L 40, 41</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -841,7 +870,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>CHEZ - L 42, 43</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -852,7 +881,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>DIINSA  - L 48, Terraza 48</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -863,7 +892,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>TORRE VO  - L 49A</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -874,7 +903,7 @@ function App() {
                 <img className='logo_temp' />
                 <h3>BPLR MEXICO - L 49B</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">https://susy.mx</a>
@@ -893,10 +922,20 @@ function App() {
                 <img className='logo_temp' />
                 <h3>Grand Fiesta Americana</h3>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faPhone} /> (81) 8888.8888
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
                 </p>
                 <p>
-                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="https://www.fiestamericanatravelty.com/grand-fiesta-americana/hoteles/grand-fiesta-americana-monterrey-valle">fiesta americana</a>
+                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">fiesta americana</a>
+                </p>
+              </div>
+              <div className='listado_item'>
+                <img className='logo_temp' />
+                <h3>Live Aqua</h3>
+                <p>
+                  <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
+                </p>
+                <p>
+                  <FontAwesomeIcon className="icon" icon={faGlobe} /> <a href="#">live aqua</a>
                 </p>
               </div>
             <div className="bottomright" onClick={() => onRegresar('hotel')}>
