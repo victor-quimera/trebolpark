@@ -106,7 +106,7 @@ function App() {
   }
 
   useIdleTimer({ 
-    timeout: (1000 * 2500),
+    timeout: (1000 * 25),
     promptBeforeIdle: 0,
     onAction,
     onActive,
@@ -264,7 +264,7 @@ function App() {
               </div>
               <hr className='divisor'/>
               <div className='listado_item'>
-                  <a href="#" onClick={() => onClickCorporativo('forza')}><img className='logo_temp' /></a>
+                  <a href="#" onClick={() => onClickCorporativo('forza')}><img className='logo_forza' /></a>
                   <h3>Forza - N 5, 19</h3>
                 <p>
                   <FontAwesomeIcon className="icon" icon={faPhone} /> +52 (81) 8000.0000
